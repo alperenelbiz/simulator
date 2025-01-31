@@ -5,18 +5,18 @@ using UnityEngine;
 public class TargetSelector : MonoBehaviour
 {
     [SerializeField] private Camera _camera;
-    [SerializeField] private LayerMask _targetLayer; // Sadece hedefler seçilsin
+    [SerializeField] private LayerMask _targetLayer;
 
     private Missile _missile;
 
     private void Start()
     {
-        _missile = FindObjectOfType<Missile>(); // Sahnedeki füzeyi bul
+        _missile = FindObjectOfType<Missile>();
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) // Sol tık ile hedef seç
+        if (Input.GetMouseButtonDown(0))
         {
             Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, _targetLayer))
